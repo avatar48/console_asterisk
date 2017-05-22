@@ -1,0 +1,31 @@
+<h1> <%= "Контекст #{@context.name}" %> </h1>
+<div class="row">
+  <%= form_for(@context) do |f| %>
+    <% if @context.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@context.errors.count, "error") %> prohibited this context from being saved:</h2>
+
+        <ul>
+        <% @context.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <p>
+    <%= f.label:name, "Наименование" %>
+    <%= f.text_field:name %>
+    </p>
+    <p>
+    <%= f.label:out_sity, "Внешние звонки" %>
+    <%= f.number_field:out_sity %>
+    </p>
+    <div class="large-1 columns">
+      <%= f.submit "Сохранить", class: "button" %>
+    </div>
+  <% end %>
+
+  <div class="large-1columns">
+    <%= button_to 'Удалить', context_path(@context), method: :delete, data: { confirm: 'Вы уверены?' }, class: "button" %>
+  </div>
+</div>

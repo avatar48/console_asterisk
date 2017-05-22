@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="columns large-12 panel">
+    <div class="h1">Настройки sip.conf</div>
+  </div>
+</div>
+
+<div class="row">
+    <div class="columns large-12 panel">
+      <code> <%= "[#{@setting.name_option}]" %> </code>
+    </div>
+    <div class="columns large-12 panel">
+      <code> <%= change_on_br(@setting.value) %> </code>
+    </div>
+</div>
+<div class="row">
+    <%= link_to 'Редактировать', edit_setting_path(@setting), method: :get, class: "button" %> 
+
+</div>

@@ -1,0 +1,47 @@
+<% if notice %>
+	<p><%= notice %></p>
+<% end %>
+
+<div class="row">
+  <div class="columns large-12 panel">
+    <div class="h1">Список пользователей</div>
+  </div>
+</div>
+<div class="row">
+  <div class="large-8 colum panel">
+    <table class="table table-hover">
+      <thead>
+          <tr>
+          <th>Имя</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td>
+                <%= user.name %>
+              </td>
+              <td>
+                <%= link_to 'Show', user %>
+              </td>
+              <td>
+                <%= link_to 'Edit', edit_user_path(user) %>
+              </td>
+              <td>
+                <%= link_to 'Destroy', user, method: :delete, data: {confirm: 'Вы уверены?'} %>
+              </td>
+            </tr>
+          <% end %> 
+        </tbody>
+      </thead>
+
+</table>
+  </div>
+</div>
+<div class="row">
+    <%= link_to 'Добавить пользователя', new_user_path, method: :get, class: "button" %> 
+
+</div>
+

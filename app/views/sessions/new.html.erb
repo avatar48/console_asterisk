@@ -1,0 +1,29 @@
+<div class="row">
+	<div class="medium-6 medium-centered large-4 large-centered columns">
+		<div class="row column log-in-form">
+			<% if flash[:alert] %>
+				<p id="notice"><%= flash[:alert] %></p>
+			<% end %>
+
+			<%= form_tag do %>
+				
+					<h4 class="text-center">Вход</h4>
+
+					
+						<%=label_tag :name, 'Имя:' %>
+						<%= text_field_tag :name, params[:name], placeholder: "user" %>
+					
+
+					
+						<%= label_tag :password, 'Пароль:' %>
+						<%= password_field_tag :password, params[:password], placeholder: "password" %>
+					
+					
+						<%= submit_tag "Login", class: "button expanded" %>
+					
+				
+			<% end %>
+		</div>
+	</div>
+</div>
+

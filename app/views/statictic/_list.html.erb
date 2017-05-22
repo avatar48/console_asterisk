@@ -1,0 +1,40 @@
+    <table class="stack">
+      <thead>
+          <tr>
+          <th>Дата</th>
+          <th>Ид</th>
+          <th>Номер</th>
+          <th>Куда</th>
+          <th>Статус</th>
+        </tr>
+        <tbody>
+          <% records.each do |record| %>
+            <tr>
+              <td>
+                <%= Time.parse("#{record.calldate}").in_time_zone('Europe/Moscow') %>
+              </td>
+              <td>
+                <%= record.clid %>
+              </td>
+              <td>
+                <%= record.src %>
+              </td>
+              <td>
+                <%= record.dst %>
+              </td>
+              <td>
+                <%= translate_status(record.disposition) %>
+              </td>
+            </tr>
+          <% end %> 
+        </tbody>
+      </thead>
+    </table>
+<div class="row">
+  <div class="large-12 columns">
+
+      <%= paginate records, window: 2, :params => {:controller => 'statictic', :action => 'query'}, remote: true %>
+  <%= page_entries_info records %>
+  </div>
+  </div>
+

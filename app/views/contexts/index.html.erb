@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="columns large-12 panel">
+    <div class="h1">Диалпланы</div>
+  </div>
+  <div class="row">
+  <div class="large-8 colum panel">
+    <table class="table table-hover">
+    <thead>
+      <tr> 
+        <th>Наименование</th>
+        <th>Ваход в город</th>
+        <th>Параметры</th>
+      </tr>
+      <tbody>
+        <% @contexts.each do |context| %>
+          <tr>
+            <td>
+              <%= context.name %>
+            </td>
+            <td>
+              <%= yesno(context.out_sity) %>
+            </td>
+            <td>
+              <%= link_to 'Показать', context_path(context), method: :get %>
+            </td>
+          </tr>
+        <% end %> 
+      </tbody>
+    </thead>
+
+    </table>
+      </div>
+</div>
+<div class="row">
+<%= button_to 'Добавить контекст', new_context_path, method: :get, class: "button"%>
+</div>

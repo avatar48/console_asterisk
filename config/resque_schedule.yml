@@ -1,0 +1,5 @@
+UpdateSipStatusJob:
+  queue: "high"
+  every: '30s' 
+  class: UpdateSipStatusJobs
+  description: "scrape page"

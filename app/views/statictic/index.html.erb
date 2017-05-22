@@ -1,0 +1,38 @@
+
+<div class="row">
+	<div class="large-12 columns">
+		<h3><small>Параметры поиска.</small></h3>
+	</div>
+		<%= form_tag(query_path, method: "get", remote: true) do %>	
+			<div class="row">	
+				    <div class="large-2 columns">
+				    <h5>Дата звонков:</h5>
+				    </div>
+				    <div class="large-5 columns select-date-wrapper">
+						<%= select_date(Date.today-1.day, {prefix: :start_date}, { :class => "select-date" }) %>
+				    </div>
+				    <div class="large-5 columns select-date-wrapper">
+						<%= select_date(Date.today, {prefix: :finish_date}, { :class => "select-date" }) %>
+				    </div>
+			</div>
+			<div class="row">
+				<div class="large-2 columns">
+					<h5>Номер:</h5>
+				</div>
+				<div class="large-10 columns">
+					<%= select_tag(:number, options_from_collection_for_select(@phones, :number, :callerid), include_blank: ["Все"] ) %>
+				</div>
+				
+			</div>
+		  	<%= submit_tag("Поиск", class: "button" ) %>
+	<% end %>
+</div>
+
+
+
+<div class="row">
+	<div class="large-12 columns align-center">
+		<div id="show_list"> </div>		
+	</div>
+</div>
+

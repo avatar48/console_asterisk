@@ -1,0 +1,14 @@
+
+<div class="row">
+    <div class="large-12 columns">
+
+ 
+		<%= form_for(@setting) do |f| %>
+		<%= f.label:value, "Код" %>
+		<%= f.text_area(:value, rows: 10)%>
+	    <%= f.submit 'Сохранить', class: "button"%>
+	<% end %>	
+
+    </div>
+
+</div>

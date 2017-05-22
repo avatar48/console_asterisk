@@ -1,0 +1,14 @@
+<h1>Добавление диалплана</h1>
+
+<%= form_for @context, url:{ action: "create"} do |f| %>
+<p>
+<%= f.label:name, "Наименование" %>
+<%= f.text_field:name %>
+</p>
+<p>
+<%= f.label:out_sity, "Внешние звонки" %>
+<%= f.number_field:out_sity %>
+</p>
+<%= f.submit "Создать" %>
+
+<% end %>

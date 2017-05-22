@@ -1,0 +1,49 @@
+<div class="row">
+<%= form_for(@phone) do |f| %>
+  <% if @phone.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@phone.errors.count, "error") %> prohibited this phone from being saved:</h2>
+
+      <ul>
+      <% @phone.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<p>
+<%= f.label:number, "Номер" %>
+<%= f.number_field:number, :size => 3 %>
+</p>
+<p>
+<%= f.label:password, "Пароль" %>
+<%= f.password_field:password %>
+</p>
+<p>
+<%= f.label:context_id, "Диалплан" %>
+<%= f.collection_select(:context_id,  @phone.allowed_contexts.collect, :id, :name) %>
+
+</p>
+<p>
+<%= f.label:pickupgroup, "Группа перехвата" %>
+<%= f.number_field:pickupgroup %>
+</p>
+<p>
+<%= f.label:callgroup, "Группа входящих звонков" %>
+<%= f.number_field:callgroup %>
+</p>
+<p>
+<%= f.label:callerid, "Ид номера" %>
+<%= f.text_field:callerid %>
+</p>
+<div class="large-1 columns">
+<%= f.submit "Сохранить", class: "button" %>
+</div>
+
+<% end %>
+
+<div class="large-1columns">
+
+<%= button_to 'Удалить', phone_path(@phone), method: :delete, data: { confirm: 'Вы уверены?' }, class: "button" %>
+</div>
+</div>
